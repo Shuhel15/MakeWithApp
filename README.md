@@ -1,4 +1,3 @@
-﻿# MakeWithApp
 # MakeWith Mobile Application
 
 ## Frontend Development Internship Task
@@ -192,12 +191,6 @@ Project screenshots are available in:
 ```txt
 screenshots/
 ```
-
----
-
-## Demo Video
-
-Demo video link will be provided with final submission.
 
 ---
 
