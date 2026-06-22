@@ -6,6 +6,7 @@ export interface BaseApiResponse {
 }
 
 export interface AuthResponse extends BaseApiResponse {
+  token?: string;
   data?: {
     user: User;
   };
@@ -44,7 +45,7 @@ export type RootStackParamList = {
   Login: undefined;
   Password: { identifier: string };
   Signup: undefined;
-  OtpVerification: { phoneNumber: string };
+  OtpVerification: { phoneNumber: string; devOtp?: string };
   ProfileOnboarding: { phoneNumber: string };
   ProfileSetup: { user: User };
   Home: undefined;

@@ -4,18 +4,17 @@ import { Platform } from 'react-native';
 
 // Standard local backend development URL fallbacks
 // For Android emulator: 10.0.2.2 is mapped to host machine's localhost
-const DEFAULT_URL = Platform.select({
-  android: 'http://10.0.2.2:5000',
-  ios: 'http://localhost:5000',
-  default: 'http://localhost:5000',
-});
+const DEFAULT_URL = process.env.EXPO_PUBLIC_API_URL || 
+                    process.env.REACT_NATIVE_API_URL || 
+                    'http://10.81.206.236:5000';
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL || DEFAULT_URL;
+const BASE_URL = DEFAULT_URL;
 const TOKEN_KEY = 'auth_token_makewith';
 
 export const api = axios.create({
   baseURL: `${BASE_URL}/api`,
   timeout: 10000,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -72,7 +71,7 @@ api.interceptors.request.use(
 
 // MOCK API FLAG
 // Set to true to run everything using the client-side mock service database
-export const USE_MOCK_API = true;
+export const USE_MOCK_API = false;
 
 // Mock database to simulate server-side state
 interface MockUser {

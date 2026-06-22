@@ -33,7 +33,7 @@ export const OtpVerificationScreen: React.FC<OtpVerificationScreenProps> = ({
   navigation,
   route,
 }) => {
-  const { phoneNumber } = route.params;
+  const { phoneNumber, devOtp } = route.params;
   const colorScheme = useColorScheme();
   const theme = COLORS[colorScheme === 'dark' ? 'dark' : 'light'];
 
@@ -110,6 +110,13 @@ export const OtpVerificationScreen: React.FC<OtpVerificationScreenProps> = ({
             Enter the 6-digit code sent to{' '}
             <Text style={{ fontWeight: '600', color: theme.primary }}>{phoneNumber}</Text>
           </Text>
+          {devOtp && (
+            <View style={[styles.devOtpContainer, { backgroundColor: theme.primary + '15', borderColor: theme.primary }]}>
+              <Text style={[styles.devOtpText, { color: theme.primary }]}>
+                [Dev Mode] Verification Code: <Text style={{ fontWeight: 'bold' }}>{devOtp}</Text>
+              </Text>
+            </View>
+          )}
         </View>
 
         <View style={styles.formContainer}>
@@ -229,6 +236,18 @@ const styles = StyleSheet.create({
   linkText: {
     ...TYPOGRAPHY.bodyMedium,
     fontWeight: '600',
+  },
+  devOtpContainer: {
+    marginTop: SPACING.md,
+    padding: SPACING.sm,
+    borderRadius: 8,
+    borderWidth: 1,
+    alignItems: 'center',
+    width: '100%',
+  },
+  devOtpText: {
+    ...TYPOGRAPHY.bodyMedium,
+    fontWeight: '500',
   },
 });
 export default OtpVerificationScreen;

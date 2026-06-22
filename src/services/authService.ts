@@ -113,10 +113,8 @@ export const authService = {
       // Backend sets a token cookie, but for React Native we save the token
       // returned or in headers if configured. Let's assume response has token or we read cookie headers.
       // In mobile, we check if body has data.token or similar, otherwise set a dummy/stored token.
-      if (response.data && response.data.data) {
-        // Assume backend sends token in response data for API clients, if any
-        const token = (response.data as any).token || 'mobile_session_token';
-        await setToken(token);
+      if (response.data && response.data.token) {
+        await setToken(response.data.token);
       }
       return response.data;
     } catch (error) {
@@ -150,9 +148,8 @@ export const authService = {
         return response.data;
       }
       const response = await api.post<AuthResponse>('/auth/login', payload);
-      if (response.data && response.data.data) {
-        const token = (response.data as any).token || 'mobile_session_token';
-        await setToken(token);
+      if (response.data && response.data.token) {
+        await setToken(response.data.token);
       }
       return response.data;
     } catch (error) {

@@ -65,9 +65,10 @@ export const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
 
       setIsLoading(true);
       try {
-        await authService.sendOtp(formattedPhone);
+        const response = await authService.sendOtp(formattedPhone);
         setIsLoading(false);
-        navigation.navigate('OtpVerification', { phoneNumber: formattedPhone });
+        const devOtp = (response as any).devOtp;
+        navigation.navigate('OtpVerification', { phoneNumber: formattedPhone, devOtp });
       } catch (err: any) {
         setIsLoading(false);
         setError(err.message || 'Failed to send OTP. Please try again.');
@@ -95,9 +96,10 @@ export const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
 
       setIsLoading(true);
       try {
-        await authService.sendOtp(simulatedPhone);
+        const response = await authService.sendOtp(simulatedPhone);
         setIsLoading(false);
-        navigation.navigate('OtpVerification', { phoneNumber: simulatedPhone });
+        const devOtp = (response as any).devOtp;
+        navigation.navigate('OtpVerification', { phoneNumber: simulatedPhone, devOtp });
       } catch (err: any) {
         setIsLoading(false);
         setError(err.message || 'Failed to initialize Gmail signup. Please try again.');

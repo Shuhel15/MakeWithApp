@@ -274,13 +274,17 @@ Home Screen
 
 ---
 
+## Security & Dev Features Added
+
+* **Secure Token Storage**: Leverages `expo-secure-store` to keep JWT safe on native devices and `localStorage` on web.
+* **Existence Helpers**: Added `/check-exists` and `/check-username` to dynamically verify usernames and phone numbers without needing full authorization credentials.
+* **Development OTP Code**: In development mode, OTP is logged to console and returned in response as `devOtp` for instant debugging and visual testing.
+
 ## Future Improvements
 
 * Refresh Token Support
-* Secure Token Storage
 * Forgot Password Flow
 * Social Login Integration
-* Persistent Authentication State
 
 ---
 
