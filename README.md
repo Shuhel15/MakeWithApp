@@ -48,7 +48,6 @@ This project is a React Native mobile application built using Expo and TypeScrip
 ### Home
 - Dummy Home Screen  
 
----
 ## Project Structure
 
 src/
@@ -76,7 +75,6 @@ src/
 │   └── authService.ts
 
 └── types/
----
 ## Authentication Flow
 
 ### New User
