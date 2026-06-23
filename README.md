@@ -49,7 +49,7 @@ This project is a React Native mobile application built using Expo and TypeScrip
 - Dummy Home Screen  
 
 ## Project Structure
-
+```text
 src/
 ├── components/
 │   ├── CustomButton.tsx
@@ -75,6 +75,7 @@ src/
 │   └── authService.ts
 
 └── types/
+```
 ## Authentication Flow
 
 ### New User
